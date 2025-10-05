@@ -13,7 +13,7 @@ public class sistemPerpustakaan {
         kehadiran = input.nextLine();
         
         if (kehadiran.equalsIgnoreCase("yes")) {
-            System.out.println("Output Masuk Kampus");
+            System.out.println("Masuk Kampus");
         } else {
             System.out.println("Silahkan Register Online terlebih dahulu.");
             System.out.println("Setelah Register Online, baru bisa masuk kampus. ");
