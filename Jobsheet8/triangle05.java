@@ -10,7 +10,7 @@ public class triangle05 {
         while (i<= n) {
             int j = 0;
             while (j < i) {
-                System.out.println("*");
+                System.out.print("*");
                 j++;
             }
             i++;
