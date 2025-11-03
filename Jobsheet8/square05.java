@@ -12,5 +12,6 @@ public class square05 {
             }
             System.out.println();
         }
-    }
+    sc.close();
+}
 }
