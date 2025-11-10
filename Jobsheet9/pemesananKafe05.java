@@ -1,13 +1,14 @@
 package Jobsheet9;
 
 import java.util.Scanner;
+
 public class pemesananKafe05 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Masukkan jumlah pesanan: ");
         int jumlah = sc.nextInt();
-        sc.nextLine(); 
+        sc.nextLine();
 
         String[] namaPesanan = new String[jumlah];
         double[] hargaPesanan = new double[jumlah];
@@ -19,12 +20,13 @@ public class pemesananKafe05 {
 
             System.out.print("Masukkan harga untuk " + namaPesanan[i] + ": Rp ");
             hargaPesanan[i] = sc.nextDouble();
-            sc.nextLine(); 
+            sc.nextLine();
 
             total += hargaPesanan[i];
         }
 
         System.out.println("\n=== Daftar Pesanan Anda ===");
+        
         for (int i = 0; i < jumlah; i++) {
             System.out.println((i + 1) + ". " + namaPesanan[i] + " - Rp " + hargaPesanan[i]);
         }
