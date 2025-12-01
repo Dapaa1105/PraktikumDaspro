@@ -29,9 +29,21 @@ public class kafe05 {
         System.out.println("===========================");
     }
 
-    public static int hitungTotalHargaNoPresensi(int pilihanMenu, int banyakItem) {
+    public static int hitungTotalHargaNoPresensi(int pilihanMenu, int banyakItem, String kodePromo) {
         int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
+
         int hargaTotal = hargaItems[pilihanMenu - 1] * banyakItem;
+
+        if(kodePromo.equals("DISKON50")) {
+            System.out.println("Diskon 50% diterapkan");
+            hargaTotal = hargaTotal - (hargaTotal * 50 / 100);
+        } else if(kodePromo.equals("DISKON30")) {
+            System.out.println("Diskon 30% diterapkan");
+            hargaTotal = hargaTotal - (hargaTotal * 30 / 100);
+        } else {
+            System.out.println("Kode promo invalid, tidak ada diskon");
+        }
+
         return hargaTotal;
     }
 
@@ -39,16 +51,30 @@ public class kafe05 {
 
         Scanner sc = new Scanner(System.in);
 
-        Menu("Andi", true, "DISKON50");
+        Menu("Andi", true, "DISKON30");
 
-        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
-        int pilihanMenu = sc.nextInt();
+        System.out.print("\nBerapa jenis menu yang ingin Anda pesan? ");
+        int jumlahJenisMenu = sc.nextInt();
 
-        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
-        int banyakItem = sc.nextInt();
+        int totalKeseluruhan = 0;
 
-        int totalBayar = hitungTotalHargaNoPresensi(pilihanMenu, banyakItem);
+        for(int i = 1; i <= jumlahJenisMenu; i++) {
+            System.out.print("\nMasukkan nomor menu ke-" + i + ": ");
+            int pilihanMenu = sc.nextInt();
 
-        System.out.println("\nTotal harga untuk pesanan Anda: Rp " + totalBayar);
+            System.out.print("Masukkan jumlah item untuk menu tersebut: ");
+            int banyakItem = sc.nextInt();
+
+            System.out.print("Masukkan kode promo: ");
+            String kodePromo = sc.next();
+
+            int totalMenu = hitungTotalHargaNoPresensi(pilihanMenu, banyakItem, kodePromo);
+
+            System.out.println("Total untuk menu ini: Rp " + totalMenu);
+
+            totalKeseluruhan += totalMenu;
+        }
+
+        System.out.println("\nTotal keseluruhan pesanan Anda: Rp " + totalKeseluruhan);
     }
 }
